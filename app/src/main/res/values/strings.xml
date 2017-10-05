@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">apidemo</string>
+    <string name="app_name">MyApiDemo</string>
     <string name="alert_dialog_ok">OK</string>
 </resources>

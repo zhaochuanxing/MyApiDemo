@@ -6,8 +6,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:supportsRtl="true">
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".XfermodeActivity">
@@ -17,9 +16,22 @@
         <activity android:name=".view.ViewActivity">
         </activity>
         <activity android:name=".view.ImageViewActivity">
-
         </activity>
         <activity android:name=".view.SpecialImageViewActivity">
+        </activity>
+        <activity
+            android:name=".app.ActionBarMechanics"
+            android:enabled="true"
+            android:label="哈哈哈">
+        </activity>
+        <activity
+            android:name=".app.ActionBarNavigation"
+            android:icon="@drawable/card_history"
+            android:label="actionbar demo"
+            android:logo="@mipmap/ic_launcher">
+
+        </activity>
+        <activity android:name=".app.ActionBarUsage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
