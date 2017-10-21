@@ -29,9 +29,11 @@
             android:icon="@drawable/card_history"
             android:label="actionbar demo"
             android:logo="@mipmap/ic_launcher">
-
         </activity>
         <activity android:name=".app.ActionBarUsage">
+
+        </activity>
+        <activity android:name=".myviewgroup.MyViewGroupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
