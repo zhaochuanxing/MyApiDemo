@@ -31,9 +31,11 @@
             android:logo="@mipmap/ic_launcher">
         </activity>
         <activity android:name=".app.ActionBarUsage">
-
         </activity>
         <activity android:name=".myviewgroup.MyViewGroupActivity">
+
+        </activity>
+        <activity android:name=".myviewgroup.FlowActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_flow"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xing.apidemo.myviewgroup.FlowActivity">
+    <com.xing.apidemo.myviewgroup.MyFlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            style="@style/text_search"
+            android:text="android"/>
+        <TextView
+            style="@style/text_search"
+            android:text="android"/>
+        <TextView
+            style="@style/text_search"
+            android:text="android"/>
+        <TextView
+            style="@style/text_search"
+            android:text="android"/>
+        <TextView
+            style="@style/text_search"
+            android:text="android"/>
+        <TextView
+            style="@style/text_search"
+            android:text="android"/>
+
+    </com.xing.apidemo.myviewgroup.MyFlowLayout>
+
+</RelativeLayout>
