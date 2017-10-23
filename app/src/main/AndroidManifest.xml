@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.xing.apidemo">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -33,9 +36,14 @@
         <activity android:name=".app.ActionBarUsage">
         </activity>
         <activity android:name=".myviewgroup.MyViewGroupActivity">
-
         </activity>
         <activity android:name=".myviewgroup.FlowActivity">
+
+        </activity>
+        <activity
+            android:name=".webview.MyWebViewActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:process=":h5">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

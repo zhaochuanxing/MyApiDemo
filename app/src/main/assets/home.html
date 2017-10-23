@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+document.write("<h1>This is a heading</h1>");
+    function showLog(){
+        var msg = window.AndroidTest.show('from js');
+        alert(msg);
+        window.AndroidTest.showLog();
+    };
+
+    function callFromJava(str){
+        confirm(str);
+        return "call from java";
+    }
+    <!--showLog();-->
+</script>
+</head>
+<body>
+<h1>try page</h1>
+<button type="button" onclick="showLog()">Click </button>
+<button type="button" onclick="callFromJava('zhao')">call from java</button>
+</body>
+</html>
