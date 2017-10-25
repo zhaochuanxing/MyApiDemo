@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Picture;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,8 @@ import android.widget.Toast;
 
 import com.xing.apidemo.R;
 import com.xing.apidemo.Util.AndroidTest;
+
+import java.util.Set;
 
 public class MyWebViewActivity extends Activity {
 
@@ -70,6 +73,9 @@ public class MyWebViewActivity extends Activity {
     }
 
     private void initWebView() {
+        if (Build.VERSION.SDK_INT > 10 && Build.VERSION.SDK_INT< 17){
+            fixWebView();
+        }
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
@@ -77,13 +83,25 @@ public class MyWebViewActivity extends Activity {
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDefaultTextEncodingName("UTF-8");
-        mWebView.addJavascriptInterface(new AndroidTest(MyWebViewActivity.this),"AndroidTest");
+        mWebView.addJavascriptInterface(new AndroidTest(MyWebViewActivity.this), "AndroidTest");
 
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
+                Uri uri = Uri.parse(url);
+                if ("js".equals(uri.getScheme())) {
+                    if ("webview".equals(uri.getAuthority())) {
+                        Log.i(TAG, " call android by uri");
+                        Set<String> queryParameterNames = uri.getQueryParameterNames();
+                        for (String param : queryParameterNames) {
+                            String queryParameter = uri.getQueryParameter(param);
+                            Log.i(TAG, "queryParameter =" + queryParameter);
+                        }
+                        return true;
+                    }
+                }
+//                view.loadUrl(url);
+                return super.shouldOverrideUrlLoading(view, url);
             }
 
             @Override
@@ -97,7 +115,7 @@ public class MyWebViewActivity extends Activity {
                 super.onPageFinished(view, url);
                 Log.i(TAG, "onPageFinished " + url);
                 //JS代码调用一定要在 onPageFinished（） 回调之后才能调用，否则不会调用。
-                javaCalljs();
+//                javaCalljs();
             }
 
             @Override
@@ -160,6 +178,20 @@ public class MyWebViewActivity extends Activity {
             @Override
             public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, final JsPromptResult result) {
                 final EditText editText = new EditText(MyWebViewActivity.this);
+                Log.i(TAG, "onJsPrompt " + ",url=" + url + ",msg=" + message + ",default=" + defaultValue + ",result= " + result);
+                Uri uri = Uri.parse(message);
+                if ("js".equals(uri.getScheme())) {
+                    if ("demo".equals(uri.getAuthority())) {
+                        Set<String> queryParameterNames = uri.getQueryParameterNames();
+                        for (String param : queryParameterNames) {
+                            String queryParameter = uri.getQueryParameter(param);
+                            Log.i(TAG, "param = " + queryParameter);
+                        }
+                        result.confirm("成功返回");
+                        return true;
+                    }
+                }
+
                 editText.setText(defaultValue);
                 AlertDialog.Builder builder = new AlertDialog.Builder(MyWebViewActivity.this);
                 builder.setTitle(message).setView(editText)
@@ -212,5 +244,14 @@ public class MyWebViewActivity extends Activity {
             return true;
         }
         return super.onKeyDown(keyCode,event);
+    }
+
+    @TargetApi(11)
+    private void fixWebView() {
+        //        http://50.56.33.56/blog/?p=314
+        //        http://drops.wooyun.org/papers/548
+        // We hadn't use addJavascriptInterface, but WebView add "searchBoxJavaBridge_" to mJavaScriptObjects below API 17 by default:
+        // mJavaScriptObjects.put(SearchBoxImpl.JS_INTERFACE_NAME, mSearchBox);
+        mWebView.removeJavascriptInterface("searchBoxJavaBridge_");
     }
 }
