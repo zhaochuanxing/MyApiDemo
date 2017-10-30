@@ -11,7 +11,7 @@ document.write("<h1>This is a heading</h1>");
 
     function callFromJava(str){
         confirm(str);
-        return "call from java";
+        <!--return "call from java";-->
     }
 
     function callAndroidUrl(){
@@ -26,6 +26,21 @@ document.write("<h1>This is a heading</h1>");
         var value = prompt("js://demo?param1=234&param2=123");
         alert(value);
     }
+    function gotoCategory(){
+        var value = prompt("vodbridge://category?id=1");
+    }
+
+    function gotoDetail(){
+        var value = prompt("vodbridge://detail?id=2&index=3");
+    }
+
+    function gotoPay(){
+        var value = prompt("vodbridge://pay?platformid=3&id=4");
+    }
+
+    function gotoSearch(){
+        var value = prompt("vodbridge://search");
+    }
 </script>
 </head>
 <body>
@@ -36,5 +51,9 @@ document.write("<h1>This is a heading</h1>");
 <button type="button" onclick="callAndroidUrl()">call android by url </button>
 <button type="button" onclick="showPrompt()">show prompt</button>
 <button type="button" onclick="passByPrompt()">pass prompt</button>
+<br/>
+<button type="button" onclick="gotoCategory()">category</button>
+<br/>
+<button type="button" onclick="gotoPay()">pay </button>
 </body>
 </html>

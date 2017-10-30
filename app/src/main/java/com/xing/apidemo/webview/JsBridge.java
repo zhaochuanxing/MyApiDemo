@@ -1,14 +1,17 @@
 package com.xing.apidemo.webview;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.JsPromptResult;
 import android.webkit.WebView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -82,6 +85,28 @@ public class JsBridge implements IBridge {
                             e.printStackTrace();
                         }
                     }
+                }
+            }
+        }
+    }
+
+    public static void handle(WebView view, String message, JsPromptResult result) {
+        if(!TextUtils.isEmpty(message)){
+            Uri uri = Uri.parse(message);
+            String schme = uri.getScheme();
+            String authorty = uri.getAuthority();
+
+            String host = uri.getHost();
+            String param = uri.getQuery();
+            String port = String.valueOf(uri.getPort());
+            String path = uri.getPath();
+            String methodName = "";
+            if(!TextUtils.isEmpty(path)){
+                methodName = path.replace("/","");
+            }
+            if("vodbridge".equals(schme)){
+                if("category".equals(authorty)){
+
                 }
             }
         }

@@ -17,9 +17,9 @@ public class JsBridgeWebChromeClient extends WebChromeClient {
     @Override
     public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
         Log.i(NewWebViewActivity.TAG,"msg = "+message);
-        JsBridge.register("bridge",BridgeImpl.class);
 
         JsBridge.callJava(view,message);
+        JsBridge.handle(view,message,result);
         result.confirm("haha");
         return true;
     }

@@ -25,6 +25,8 @@ public class NewWebViewActivity extends Activity {
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         mWebView.setWebChromeClient(new JsBridgeWebChromeClient());
+        JsBridge.register("bridge",BridgeImpl.class);
+
         String url = "file:///android_asset/webview.html";
         mWebView.loadUrl(url);
     }

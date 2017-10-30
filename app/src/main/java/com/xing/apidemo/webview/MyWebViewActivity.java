@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.xing.apidemo.R;
 import com.xing.apidemo.Util.AndroidTest;
 
+import java.util.HashMap;
 import java.util.Set;
 
 public class MyWebViewActivity extends Activity {
@@ -55,8 +56,8 @@ public class MyWebViewActivity extends Activity {
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
-    private void javaCalljs(){
-        final String js="javascript:callFromJava('call from java')";
+    private void javaCalljs() {
+        final String js = "javascript:callFromJava('call from java')";
 //        mWebView.post(new Runnable() {
 //            @Override
 //            public void run() {
@@ -67,17 +68,17 @@ public class MyWebViewActivity extends Activity {
         mWebView.evaluateJavascript(js, new ValueCallback<String>() {
             @Override
             public void onReceiveValue(String value) {
-                Log.i(TAG,"onReceiveValue"+value);
+                Log.i(TAG, "onReceiveValue" + value);
             }
         });
     }
 
     private void initWebView() {
-        if (Build.VERSION.SDK_INT > 10 && Build.VERSION.SDK_INT< 17){
+        if (Build.VERSION.SDK_INT > 10 && Build.VERSION.SDK_INT < 17) {
             fixWebView();
         }
         WebSettings webSettings = mWebView.getSettings();
-        webSettings.setUseWideViewPort(true);
+//        webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
         //设置允许js弹窗口
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
@@ -90,15 +91,37 @@ public class MyWebViewActivity extends Activity {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Uri uri = Uri.parse(url);
                 if ("js".equals(uri.getScheme())) {
-                    if ("webview".equals(uri.getAuthority())) {
-                        Log.i(TAG, " call android by uri");
-                        Set<String> queryParameterNames = uri.getQueryParameterNames();
-                        for (String param : queryParameterNames) {
-                            String queryParameter = uri.getQueryParameter(param);
-                            Log.i(TAG, "queryParameter =" + queryParameter);
-                        }
-                        return true;
+                    Set<String> queryParameterNames = uri.getQueryParameterNames();
+                    HashMap<String, String> paramMap = new HashMap<String, String>();
+                    for (String param : queryParameterNames) {
+                        String queryParameter = uri.getQueryParameter(param);
+                        paramMap.put(param, queryParameter);
+                        Log.i(TAG, "queryParameter =" + queryParameter);
                     }
+                    String authority = uri.getAuthority();
+                    Toast.makeText(mWebView.getContext(), authority, Toast.LENGTH_LONG).show();
+//                    if ("webview".equals(uri.getAuthority())) {
+//                        Log.i(TAG, " call android by uri");
+//                        return true;
+//                    } else if ("category".equals(authority)) {
+//                        Log.i(TAG, "call category" + paramMap.get("id"));
+//                    } else if ("pay".equals(authority)) {
+//                        new Thread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                //do pay things;
+//                                Log.i(TAG,"pay success");
+//                                mWebView.post(new Runnable() {
+//                                    @Override
+//                                    public void run() {
+//                                        String payUri = "javascript:callFromJava('pay success')";
+//                                        mWebView.loadUrl(payUri);
+//                                    }
+//                                });
+//                            }
+//                        }).start();
+//                    }
+                    return true;
                 }
 //                view.loadUrl(url);
                 return super.shouldOverrideUrlLoading(view, url);
@@ -180,16 +203,51 @@ public class MyWebViewActivity extends Activity {
                 final EditText editText = new EditText(MyWebViewActivity.this);
                 Log.i(TAG, "onJsPrompt " + ",url=" + url + ",msg=" + message + ",default=" + defaultValue + ",result= " + result);
                 Uri uri = Uri.parse(message);
-                if ("js".equals(uri.getScheme())) {
-                    if ("demo".equals(uri.getAuthority())) {
-                        Set<String> queryParameterNames = uri.getQueryParameterNames();
-                        for (String param : queryParameterNames) {
-                            String queryParameter = uri.getQueryParameter(param);
-                            Log.i(TAG, "param = " + queryParameter);
-                        }
-                        result.confirm("成功返回");
-                        return true;
+                if ("vodbridge".equals(uri.getScheme())) {
+                    String authority = uri.getAuthority();
+                    Toast.makeText(mWebView.getContext(), authority, Toast.LENGTH_LONG).show();
+
+                    HashMap<String, String> paramMap = new HashMap<String, String>();
+                    Set<String> queryParameterNames = uri.getQueryParameterNames();
+                    for (String param : queryParameterNames) {
+                        String queryParameter = uri.getQueryParameter(param);
+                        paramMap.put(param, queryParameter);
+                        Log.i(TAG, "param = " + queryParameter);
                     }
+
+                    if ("webview".equals(authority)) {
+                        Log.i(TAG, " call android by uri");
+                        return true;
+                    } else if ("category".equals(authority)) {
+                        Log.i(TAG, "call category" + paramMap.get("id"));
+                    } else if ("pay".equals(authority)) {
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.i(TAG,"pay success");
+                                try {
+                                    Thread.sleep(2000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+
+                                mWebView.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+//                                        String payUri = "javascript:callFromJava('pay success')";
+//                                        mWebView.loadUrl(payUri);
+                                        MyWebViewActivity.this.javaCalljs();
+
+                                    }
+                                });
+                            }
+                        }).start();
+                    }else if("search".equals(authority)){
+                        Log.i(TAG,"goto search");
+                    }
+
+                    result.confirm("成功返回");
+                    return true;
                 }
 
                 editText.setText(defaultValue);
@@ -216,8 +274,8 @@ public class MyWebViewActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mWebView.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
         mContainerLayout.removeAllViews();
+        mWebView.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
         mWebView.clearHistory();
         mWebView.removeAllViews();
         mWebView.stopLoading();
@@ -229,21 +287,21 @@ public class MyWebViewActivity extends Activity {
     private void initView() {
         mContainerLayout = (RelativeLayout) findViewById(R.id.contianer_layout);
         mWebView = new WebView(MyWebViewActivity.this);
-        mContainerLayout.addView(mWebView, ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        mContainerLayout.addView(mWebView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && mWebView.canGoBack()) {
-            if(mIsLoadError){
+            if (mIsLoadError) {
                 mIsLoadError = false;
                 mWebView.goBackOrForward(-2);
-            }else{
+            } else {
                 mWebView.goBack();
             }
             return true;
         }
-        return super.onKeyDown(keyCode,event);
+        return super.onKeyDown(keyCode, event);
     }
 
     @TargetApi(11)
