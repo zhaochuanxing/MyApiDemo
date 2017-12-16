@@ -1,5 +1,6 @@
 package com.xing.apidemo.volley;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,7 +14,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.xing.apidemo.R;
@@ -24,16 +27,18 @@ import org.json.JSONObject;
 public class VolleyActivity extends AppCompatActivity {
 
     private TextView mContentTx;
+    private NetworkImageView mImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volley);
-        initView();
         initMyView();
 
 //        getNetWorkData();
         getIpInfo();
+        loadImg();
+
     }
 
     private void getIpInfo() {
@@ -59,19 +64,25 @@ public class VolleyActivity extends AppCompatActivity {
 
     private void initMyView() {
         mContentTx = (TextView)findViewById(R.id.tx_content);
+        mImageView = (NetworkImageView)findViewById(R.id.img_net);
     }
 
-    private void initView() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+    private void loadImg() {
+        mImageView.setDefaultImageResId(R.drawable.shape_tip);
+        mImageView.setErrorImageResId(0);
+        RequestQueue requestQueue = VolleyUtil.getInstance(this).getRequestQueue();
+        ImageLoader imageLoader = new ImageLoader(requestQueue, new ImageLoader.ImageCache() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public Bitmap getBitmap(String url) {
+                return null;
+            }
+
+            @Override
+            public void putBitmap(String url, Bitmap bitmap) {
+
             }
         });
+        mImageView.setImageUrl("http://img.taopic.com/uploads/allimg/120727/201995-120HG1030762.jpg",imageLoader);
     }
 
     private void getNetWorkData() {
