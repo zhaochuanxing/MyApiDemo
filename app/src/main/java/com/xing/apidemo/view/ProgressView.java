@@ -71,7 +71,7 @@ public class ProgressView extends View {
 
         //绘制文字 横向纵向居中
         canvas.drawText(mShowText,0,mShowText.length(),mCircleXY-(mTextSize*mShowText.length()/2)
-                ,mCircleXY/4,mTextPaint);
+                ,mCircleXY+mTextSize/4,mTextPaint);
         // x 开始绘制的起点
         //y 绘制文字的基线,并不一定是文字的底线，基线下面也会有绘制文字的地方，因此这里选择用/4来表示
         //y的偏移，而不是/2

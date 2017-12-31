@@ -64,9 +64,11 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".aty.MyTextViewActivity">
-
         </activity>
         <activity android:name=".aty.ProgressActivity">
+
+        </activity>
+        <activity android:name=".app.SoundShapeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
