@@ -62,9 +62,11 @@
         <activity
             android:name=".okhttp.OkhttpActivity"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
         <activity android:name=".aty.MyTextViewActivity">
+
+        </activity>
+        <activity android:name=".aty.ProgressActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
