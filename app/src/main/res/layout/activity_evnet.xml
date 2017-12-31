@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xing.apidemo.aty.EvnetActivity">
+
+    <com.xing.apidemo.view.event.MyViewGroupA
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ff0000">
+        <com.xing.apidemo.view.event.MyViewGroupB
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00ff00"
+            android:layout_margin="50dp">
+            <com.xing.apidemo.view.event.MyView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="50dp"
+                android:background="#0000ff"/>
+        </com.xing.apidemo.view.event.MyViewGroupB>
+    </com.xing.apidemo.view.event.MyViewGroupA>
+
+</android.support.constraint.ConstraintLayout>

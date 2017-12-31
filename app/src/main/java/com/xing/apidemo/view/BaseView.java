@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Chronometer;
 
@@ -52,5 +53,17 @@ public class BaseView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Log.i(TAG,"onDraw "+ canvas);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        Log.i(TAG,"onTouchEvent "+this);
+        return super.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        Log.i(TAG,"dispatchTouchEvent"+this);
+        return super.dispatchTouchEvent(event);
     }
 }
