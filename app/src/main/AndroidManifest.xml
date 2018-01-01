@@ -78,9 +78,11 @@
         <activity android:name=".aty.LayerActivity">
         </activity>
         <activity android:name=".aty.BitmapActivity">
-
         </activity>
         <activity android:name=".aty.PorterActivity">
+
+        </activity>
+        <activity android:name=".aty.SwipeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

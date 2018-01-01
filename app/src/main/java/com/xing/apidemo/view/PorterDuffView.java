@@ -7,6 +7,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.Xfermode;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -55,6 +57,7 @@ public class PorterDuffView extends BaseView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
 ////        Canvas newCanvas = new Canvas(mOut);
 //        canvas.drawBitmap(mOut,0,0,mPaint);
 ////        canvas.drawRect(0,0,mBitmap.getWidth()-100,mBitmap.getHeight()-100,mPaint);
@@ -62,13 +65,41 @@ public class PorterDuffView extends BaseView {
 //        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
 //        canvas.drawBitmap(mBitmap,0,0,mPaint);
 
-        int min = Math.min(mWidth,mHeight);
-        Bitmap srcBitmap = Bitmap.createScaledBitmap(mBitmap,min,min,false);
-        Bitmap circleBitmap = createCircleBitmap(srcBitmap, min);
-        canvas.drawBitmap(circleBitmap,0,0,null);
-
+//        int min = Math.min(mWidth,mHeight);
+//        Bitmap srcBitmap = Bitmap.createScaledBitmap(mBitmap,min,min,false);
+//        Bitmap circleBitmap = createCircleBitmap(srcBitmap, min);
+//        canvas.drawBitmap(circleBitmap,0,0,null);
+        Bitmap roundBitmap = createRoundBitmap(mBitmap);
+        canvas.drawBitmap(roundBitmap,0,0,null);
     }
 
+    /**
+     * 添加圆角
+     * @param source
+     * @return
+     */
+    private Bitmap createRoundBitmap(Bitmap source){
+        final Paint paint = new Paint();
+        paint.setAntiAlias(false);
+        Bitmap target = Bitmap.createBitmap(mWidth,mHeight, Bitmap.Config.ARGB_8888);
+        //给画布上放一张空白的纸，来进行绘画，画成一幅画
+        Canvas canvas = new Canvas(target);
+        //切割一个圆角矩形
+        RectF rectF = new RectF(0,0,mBitmap.getWidth(),mBitmap.getHeight());
+        canvas.drawRoundRect(rectF,80,80,paint);
+        //设置画笔的绘制方式，对下一次的绘制有效
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(source,0,0,paint);
+        //画布的画纸上留下了一幅新的bitmap图
+        return target;
+    }
+
+    /**
+     * 切割圆形
+     * @param source
+     * @param min
+     * @return
+     */
     private Bitmap createCircleBitmap(Bitmap source,int min){
         Paint paint = new Paint();
         paint.setAntiAlias(true);
