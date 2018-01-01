@@ -76,6 +76,9 @@
         <activity android:name=".aty.ClockActivity">
         </activity>
         <activity android:name=".aty.LayerActivity">
+
+        </activity>
+        <activity android:name=".aty.BitmapActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
