@@ -74,6 +74,8 @@
         <activity android:name=".aty.EvnetActivity">
         </activity>
         <activity android:name=".aty.ClockActivity">
+        </activity>
+        <activity android:name=".aty.LayerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
