@@ -51,11 +51,20 @@ public class BitmapActivity extends Activity {
             g = Color.green(color);
             b = Color.blue(color);
             a = Color.alpha(color);
-            r = 255 - r;
-            g = 255-g;
-            b = 255 - b;
-            //采用位运算 移位和或运算 组合成颜色值
-            newPx[i] = Color.argb(a,r,g,b);
+
+//            //执行颜色的反转效果
+//            r = 255 - r;
+//            g = 255-g;
+//            b = 255 - b;
+//            //采用位运算 移位和或运算 组合成颜色值
+//            newPx[i] = Color.argb(a,r,g,b);
+
+            //老照片效果
+            int r1 = (int)(0.393*r+0.769*g+0.189*b);
+            int g1 = (int)(0.349*r+0.685*g+0.168*b);
+            int b1 = (int)(0.272*r+0.534*g+0.131*b);
+            newPx[i] = Color.argb(a,r1,g1,b1);
+
         }
         bmp.setPixels(newPx,0,width,0,0,width,height);
         return bmp;

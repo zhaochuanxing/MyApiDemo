@@ -76,9 +76,11 @@
         <activity android:name=".aty.ClockActivity">
         </activity>
         <activity android:name=".aty.LayerActivity">
-
         </activity>
         <activity android:name=".aty.BitmapActivity">
+
+        </activity>
+        <activity android:name=".aty.PorterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
