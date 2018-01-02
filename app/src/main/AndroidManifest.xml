@@ -86,9 +86,11 @@
         <activity android:name=".aty.ShaderActivity">
         </activity>
         <activity android:name=".aty.ReflectionActivity">
-
         </activity>
         <activity android:name=".aty.PathActivity">
+
+        </activity>
+        <activity android:name=".aty.MySurfaceViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
