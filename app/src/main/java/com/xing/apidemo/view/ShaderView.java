@@ -63,6 +63,8 @@ public class ShaderView extends BaseView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        //drawcirle 等必须要有paint
+        // drawbitmap 则paint可以为空
         canvas.drawCircle(500,500,200,mPaint);
         canvas.drawCircle(500,800,200,mRepeatPaint);
         canvas.drawRect(0,700,800,800+700,mGradientPaint);
