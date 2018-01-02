@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.support.annotation.Nullable;
@@ -20,6 +22,8 @@ public class ShaderView extends BaseView {
     private Bitmap mBitmap;
     private BitmapShader mBitmapShader;
     private Paint mPaint;
+    private Paint mRepeatPaint;
+    private Paint mGradientPaint;
 
     public ShaderView(Context context) {
         super(context);
@@ -28,6 +32,8 @@ public class ShaderView extends BaseView {
     public ShaderView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
+        initRepeat();
+        initGradient();
     }
 
     private void init() {
@@ -38,6 +44,16 @@ public class ShaderView extends BaseView {
     }
 
     private void initRepeat(){
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher);
+        BitmapShader bitmapShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        mRepeatPaint = new Paint();
+        mRepeatPaint.setShader(bitmapShader);
+    }
+
+    private void initGradient(){
+        mGradientPaint = new Paint();
+        mGradientPaint.setShader(new LinearGradient(0,0,400,400, Color.BLUE,Color.YELLOW, Shader.TileMode.REPEAT));
+
     }
 
     public ShaderView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -48,5 +64,7 @@ public class ShaderView extends BaseView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawCircle(500,500,200,mPaint);
+        canvas.drawCircle(500,800,200,mRepeatPaint);
+        canvas.drawRect(0,700,800,800+700,mGradientPaint);
     }
 }
