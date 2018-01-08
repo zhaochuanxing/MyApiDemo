@@ -37,6 +37,7 @@ public class SoundPoolActivity extends Activity implements View.OnClickListener 
         mBtnOne.setOnClickListener(this);
         mBtnTwo.setOnClickListener(this);
         mBtnThree.setOnClickListener(this);
+        SoundPoolUtil.getInstance(mActivity);
     }
 
     @Override
