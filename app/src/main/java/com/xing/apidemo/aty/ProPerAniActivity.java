@@ -1,6 +1,7 @@
 package com.xing.apidemo.aty;
 
 import android.animation.Animator;
+import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -38,7 +39,8 @@ public class ProPerAniActivity extends Activity {
 //                rotateAnimation(v);
 //                translateAni(mContentTx);
 //                scaleAni(mContentTx);
-                animationSet(mContentTx);
+//                animationSet(mContentTx);
+                loadXml(mContentTx);
             }
         });
     }
@@ -157,14 +159,22 @@ public class ProPerAniActivity extends Activity {
         mFlag = !mFlag;
     }
 
+    private void loadXml(View view){
+        Animator animator = AnimatorInflater.loadAnimator(this,R.animator.ani_set);
+        animator.setTarget(view);
+        animator.start();
+
+    }
+
     private void valueAnimation(){
-//        ValueAnimator valueAnimator = ValueAnimator.ofFloat(0f,5f,3f,10f);
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(0,50,200,100);
-        valueAnimator.setDuration(600);
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(1f,0f,1f);
+//        ValueAnimator valueAnimator = ValueAnimator.ofInt(0,50,255,0);
+        valueAnimator.setDuration(4000);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                Object value = animation.getAnimatedValue();
+               mContentTx.setAlpha((float)value);
                Log.i(TAG,"animation end "+value);
             }
         });
