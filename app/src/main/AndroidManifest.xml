@@ -93,13 +93,15 @@
         <activity android:name=".aty.MySurfaceViewActivity">
         </activity>
         <activity android:name=".aty.SoundPoolActivity">
-
         </activity>
         <activity android:name=".aty.PermissionActivity">
         </activity>
         <activity android:name=".aty.ViewAnimationActivity">
         </activity>
         <activity android:name=".aty.ShadowActivity">
+
+        </activity>
+        <activity android:name=".aty.ProPerAniActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
