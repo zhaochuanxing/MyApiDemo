@@ -49,7 +49,7 @@
         <activity
             android:name=".webview.MyWebViewActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:process=":h5">
+            >
         </activity>
         <activity android:name=".webview.NewWebViewActivity">
         </activity>
@@ -99,9 +99,11 @@
         <activity android:name=".aty.ViewAnimationActivity">
         </activity>
         <activity android:name=".aty.ShadowActivity">
-
         </activity>
         <activity android:name=".aty.ProPerAniActivity">
+
+        </activity>
+        <activity android:name=".ani.PointAnimActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
