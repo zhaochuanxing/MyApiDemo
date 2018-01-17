@@ -11,7 +11,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
 
         <!-- <meta-data -->
         <!-- android:name="com.xing.apidemo.glide.MyGlideModule" -->
@@ -100,16 +101,19 @@
         <activity android:name=".aty.ShadowActivity">
         </activity>
         <activity android:name=".aty.ProPerAniActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".ani.PointAnimActivity">
         </activity>
         <activity android:name=".aty.LayoutAniActivity">
 
+        </activity>
+        <activity android:name=".material.PaleteActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

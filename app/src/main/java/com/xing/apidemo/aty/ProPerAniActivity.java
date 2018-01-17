@@ -9,6 +9,7 @@ import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ import com.xing.apidemo.R;
 import com.xing.apidemo.ani.MyAnimation;
 import com.xing.apidemo.ani.RotateAnimation;
 
-public class ProPerAniActivity extends Activity {
+public class ProPerAniActivity extends AppCompatActivity {
 
     private static final String TAG = ProPerAniActivity.class.getSimpleName();
     private Button mOneBtn;
