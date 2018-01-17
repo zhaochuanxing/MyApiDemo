@@ -100,16 +100,16 @@
         <activity android:name=".aty.ShadowActivity">
         </activity>
         <activity android:name=".aty.ProPerAniActivity">
-
-        </activity>
-        <activity android:name=".ani.PointAnimActivity">
-        </activity>
-        <activity android:name=".aty.LayoutAniActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".ani.PointAnimActivity">
+        </activity>
+        <activity android:name=".aty.LayoutAniActivity">
+
         </activity>
     </application>
 

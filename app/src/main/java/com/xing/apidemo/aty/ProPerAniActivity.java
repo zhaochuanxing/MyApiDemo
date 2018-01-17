@@ -14,7 +14,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.xing.apidemo.MyApplication;
 import com.xing.apidemo.R;
+import com.xing.apidemo.ani.MyAnimation;
+import com.xing.apidemo.ani.RotateAnimation;
 
 public class ProPerAniActivity extends Activity {
 
@@ -43,9 +46,18 @@ public class ProPerAniActivity extends Activity {
 //                animationSet(mContentTx);
 //                loadXml(mContentTx);
 //                valuesAni(mContentTx);
-                viewAnimate(mContentTx);
+//                viewAnimate(mContentTx);
+                myAnimate(mContentTx);
             }
         });
+    }
+
+    private void myAnimate(View view){
+        if(view!=null){
+            MyAnimation myAnimation = new MyAnimation();
+            RotateAnimation rotateAnimation = new RotateAnimation(90, 180,  310.0f, true);
+            view.startAnimation(rotateAnimation);
+        }
     }
 
     private void viewAnimate(View view){
@@ -55,7 +67,7 @@ public class ProPerAniActivity extends Activity {
                     .y(300)
 //                    .alpha(1)
 //                    .y(-300)
-                    
+
                     .setDuration(2000)
                     .withStartAction(new Runnable() {
                         @Override
