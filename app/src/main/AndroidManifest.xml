@@ -48,8 +48,7 @@
         </activity>
         <activity
             android:name=".webview.MyWebViewActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            >
+            android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
         <activity android:name=".webview.NewWebViewActivity">
         </activity>
@@ -104,6 +103,8 @@
 
         </activity>
         <activity android:name=".ani.PointAnimActivity">
+        </activity>
+        <activity android:name=".aty.LayoutAniActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

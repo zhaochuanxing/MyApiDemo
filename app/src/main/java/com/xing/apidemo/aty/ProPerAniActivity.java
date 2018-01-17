@@ -5,6 +5,7 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.os.Bundle;
@@ -40,17 +41,55 @@ public class ProPerAniActivity extends Activity {
 //                translateAni(mContentTx);
 //                scaleAni(mContentTx);
 //                animationSet(mContentTx);
-                loadXml(mContentTx);
+//                loadXml(mContentTx);
+//                valuesAni(mContentTx);
+                viewAnimate(mContentTx);
             }
         });
     }
+
+    private void viewAnimate(View view){
+        if(view!=null){
+            view.animate()
+                    .alpha(0)
+                    .y(300)
+//                    .alpha(1)
+//                    .y(-300)
+                    
+                    .setDuration(2000)
+                    .withStartAction(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.i(TAG,"start ");
+                        }
+                    }).withEndAction(new Runnable() {
+                @Override
+                public void run() {
+                    Log.i(TAG,"end ");
+                }
+            }).start();
+
+        }
+    }
+
+    private void valuesAni(View view){
+        PropertyValuesHolder trans = PropertyValuesHolder.ofFloat("translationX",300f);
+        PropertyValuesHolder scaleX = PropertyValuesHolder.ofFloat("scaleX",1f,0.1f);
+        PropertyValuesHolder scaleY = PropertyValuesHolder.ofFloat("scaleY",1f,0.1f);
+        ObjectAnimator.ofPropertyValuesHolder(view,trans,scaleX,scaleY)
+                .setDuration(3000)
+                .start();
+    }
+
 
     private void animationSet(View view){
         ObjectAnimator moveIn = ObjectAnimator.ofFloat(view,"translationX",-500,0f);
         ObjectAnimator rotate = ObjectAnimator.ofFloat(view,"rotation",0f,360f);
         ObjectAnimator fadeOut = ObjectAnimator.ofFloat(view,"alpha",1f,0f,1f);
         AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.play(rotate).after(fadeOut).before(moveIn);
+//        animatorSet.play(rotate).after(fadeOut).before(moveIn);
+//        animatorSet.playTogether(moveIn,rotate,fadeOut);
+        animatorSet.playSequentially(moveIn,rotate,fadeOut);
         //对每一个动画起作用
         animatorSet.setDuration(3000);
         animatorSet.start();
