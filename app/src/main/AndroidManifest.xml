@@ -111,16 +111,20 @@
         <activity android:name=".material.ZorderActivity">
         </activity>
         <activity android:name=".material.TintActivity">
-
         </activity>
         <activity android:name=".material.ClipActivity">
         </activity>
         <activity android:name=".material.CardActivity">
+
+        </activity>
+        <activity android:name=".material.FromActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".material.ToActivity">
         </activity>
     </application>
 

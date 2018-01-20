@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xing.apidemo.material.FromActivity">
+
+    <Button
+        android:id="@+id/btn_explode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="explode"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btn_slide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="slide"/>
+
+    <Button
+        android:id="@+id/btn_fade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="fade"/>
+
+    <Button
+        android:id="@+id/btn_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="normal"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btn_fab"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:transitionName="fab"
+        android:elevation="5dp"
+        android:layout_marginTop="40dp"
+        />
+    <Button
+        android:id="@+id/btn_share"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:transitionName="share"
+        android:layout_marginTop="40dp"
+        />
+</LinearLayout>
