@@ -115,16 +115,21 @@
         <activity android:name=".material.ClipActivity">
         </activity>
         <activity android:name=".material.CardActivity">
+        </activity>
+
+        <activity android:name=".material.FromActivity">
 
         </activity>
-        <activity android:name=".material.FromActivity">
+        <activity android:name=".material.ToActivity">
+        </activity>
+
+
+        <activity android:name=".material.RippleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".material.ToActivity">
         </activity>
     </application>
 
