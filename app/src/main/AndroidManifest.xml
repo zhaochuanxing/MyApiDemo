@@ -116,15 +116,14 @@
         </activity>
         <activity android:name=".material.CardActivity">
         </activity>
-
         <activity android:name=".material.FromActivity">
-
         </activity>
         <activity android:name=".material.ToActivity">
         </activity>
-
-
         <activity android:name=".material.RippleActivity">
+
+        </activity>
+        <activity android:name=".material.RevealActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

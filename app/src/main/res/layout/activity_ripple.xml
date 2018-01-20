@@ -17,6 +17,7 @@
         android:id="@+id/btn_ripple"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:textColor="?android:textColorSecondary"
         android:text="无界波纹"
        />
     <Button
