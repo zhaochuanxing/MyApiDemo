@@ -130,9 +130,11 @@
         <activity android:name=".rxjava.RxjavaActivity">
         </activity>
         <activity android:name=".rxjava.RxBusActivity">
-
         </activity>
         <activity android:name=".rxjava.OperationActivity">
+
+        </activity>
+        <activity android:name=".rxjava.OkHttpRxActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
