@@ -13,5 +13,12 @@
         android:id="@+id/btn_basic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"/>
+        android:text="basic"/>
+
+    <Button
+        android:id="@+id/btn_collapse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="collapse"/>
 </LinearLayout>

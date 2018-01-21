@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,11 +15,14 @@ import android.widget.Button;
 import android.widget.RemoteViews;
 
 import com.xing.apidemo.R;
+import com.xing.apidemo.material.CardActivity;
 
 public class NotificationActivity extends AppCompatActivity {
 
     private static final int ID_BASIC = 1;
+    private static final int ID_COLLAPSE = 2;
     private Button mBasicBtn;
+    private Button mCollapseBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +38,15 @@ public class NotificationActivity extends AppCompatActivity {
                         showBasicNotification();
 
                     }
-                },500);
+                },3000);
+            }
+        });
+
+        mCollapseBtn = (Button)findViewById(R.id.btn_collapse);
+        mCollapseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showRemoteNotification();
             }
         });
     }
@@ -53,6 +65,22 @@ public class NotificationActivity extends AppCompatActivity {
         builder.setPriority(Notification.PRIORITY_HIGH);
         builder.setDefaults(Notification.DEFAULT_VIBRATE);
         builder.setLights(0xff00ff00,300,100);
+
+        //设置悬挂式的通知
+        Intent handleIntent = new Intent();
+        handleIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        handleIntent.setClass(this,CardActivity.class);
+        PendingIntent handlePendingIntent = PendingIntent.getActivity(this,0,handleIntent,PendingIntent.FLAG_CANCEL_CURRENT);
+        builder.setFullScreenIntent(handlePendingIntent,true);
+
+        //设置级别
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            builder.setVisibility(Notification.VISIBILITY_PUBLIC);
+            builder.setVisibility(Notification.VISIBILITY_PRIVATE);
+//            builder.setVisibility(Notification.VISIBILITY_SECRET);
+        }
+
+
         Notification notification = builder.build();
 
 //        notification.defaults |=Notification.DEFAULT_SOUND;
@@ -74,14 +102,29 @@ public class NotificationActivity extends AppCompatActivity {
     }
 
     private void showRemoteNotification(){
+
         Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse("tel:123"));
         PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,0);
-        RemoteViews remoteViews = new RemoteViews(getPackageName(),R.layout.activity_card);
+        Notification.Builder builder = new Notification.Builder(this);
+        builder.setContentIntent(pendingIntent);
+        builder.setSmallIcon(R.drawable.card_history);
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.fish));
+        builder.setAutoCancel(true);
+        builder.setContentTitle("折叠式通知");
+
+        RemoteViews remoteViews = new RemoteViews(getPackageName(),R.layout.activity_notification);
         remoteViews.setTextViewText(R.id.tx_title,"show me when collapsed");
+        Notification notification = builder.build();
+        notification.bigContentView = remoteViews;
 
-        RemoteViews expandView = new RemoteViews(getPackageName(),R.layout.activity_ripple);
+        RemoteViews normalView = new RemoteViews(getPackageName(),R.layout.activity_from);
+        notification.contentView = normalView;
 
-
+        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        if (notificationManager != null) {
+            notificationManager.notify(ID_COLLAPSE,notification);
+        }
+//        RemoteViews expandView = new RemoteViews(getPackageName(),R.layout.activity_ripple);
     }
 
 }
