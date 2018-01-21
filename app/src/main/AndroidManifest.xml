@@ -128,9 +128,11 @@
         <activity android:name=".notification.NotificationActivity">
         </activity>
         <activity android:name=".rxjava.RxjavaActivity">
-
         </activity>
         <activity android:name=".rxjava.RxBusActivity">
+
+        </activity>
+        <activity android:name=".rxjava.OperationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
