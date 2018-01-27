@@ -52,15 +52,23 @@ public class MoveView extends View {
 //            //设置top bottom的纵向偏移
 //            offsetTopAndBottom(offsetY);
 
+
             //改变布局参数
             //对view的layoutparam设置 margin的方式来调整view的位置
             //需要用marginLayoutParams，或者其子类 linearLayout.LayoutParams,RelativeLayout.LayoutParams
             //这种调用方式，会让view回调onLayout,相当于父view会让子view重新布局
             //对于constraintLayout 即使是用ConstraintLayout.MarginLayoutParams,也是不可以的
-            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) getLayoutParams();
-            marginLayoutParams.leftMargin = getLeft()+offsetX;
-            marginLayoutParams.topMargin = getTop()+offsetY;
-            setLayoutParams(marginLayoutParams);
+//            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) getLayoutParams();
+//            marginLayoutParams.leftMargin = getLeft()+offsetX;
+//            marginLayoutParams.topMargin = getTop()+offsetY;
+//            setLayoutParams(marginLayoutParams);
+
+
+            //设置滑动的方式scroll
+            //这种方式不会调用onLayout
+            View parent = (View) getParent();
+            parent.scrollBy(-offsetX,-offsetY);
+
         }
         //需要设置为return true,如果是return super，则不会有效果的。
         return true;

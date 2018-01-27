@@ -134,11 +134,13 @@
         <activity android:name=".rxjava.OperationActivity">
         </activity>
         <activity android:name=".rxjava.OkHttpRxActivity">
-
         </activity>
         <activity android:name=".emoji.EmojiActivity">
         </activity>
         <activity android:name=".myview.MoveViewActivity">
+
+        </activity>
+        <activity android:name=".myview.ScrollActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
