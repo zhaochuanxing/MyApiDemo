@@ -137,6 +137,8 @@
 
         </activity>
         <activity android:name=".emoji.EmojiActivity">
+        </activity>
+        <activity android:name=".myview.MoveViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
