@@ -138,9 +138,12 @@
         <activity android:name=".emoji.EmojiActivity">
         </activity>
         <activity android:name=".myview.MoveViewActivity">
-
         </activity>
         <activity android:name=".myview.ScrollActivity">
+
+        </activity>
+        <activity android:name=".myview.InvalidateTextViewActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
