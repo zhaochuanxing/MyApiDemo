@@ -3,4 +3,9 @@
     <declare-styleable name="CircleViewAttr">
         <attr name="circle_color" format="color"/>
     </declare-styleable>
+
+    <!--定义自定义属性 包括这些信息：属性名称、属性的的格式这里是color格式、属性所在的名称里 -->
+    <declare-styleable name="RectView">
+        <attr name="rect_color" format="color"></attr>
+    </declare-styleable>
 </resources>
