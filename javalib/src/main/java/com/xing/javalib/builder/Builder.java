@@ -2,6 +2,8 @@ package com.xing.javalib.builder;
 
 /**
  * Created by zhao on 18-2-1.
+ *
+ * 抽象Builder类
  */
 
 public abstract class Builder {
