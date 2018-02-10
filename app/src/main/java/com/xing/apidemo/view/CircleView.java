@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.xing.apidemo.R;
-import com.xing.apidemo.Util.Density;
+import com.xing.apidemo.Util.SizeUtil;
 
 /**
  * Created by zhao on 17-10-3.
@@ -41,7 +41,7 @@ public class CircleView extends View {
         mColor = typedArray.getColor(R.styleable.CircleViewAttr_circle_color,Color.BLUE);
         typedArray.recycle();
         mPaint.setColor(mColor);
-        mSize = Density.dip2px(getContext(),200);
+        mSize = SizeUtil.dip2px(getContext(),200);
     }
 
     @Override

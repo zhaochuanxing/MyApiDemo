@@ -7,7 +7,7 @@ import android.util.TypedValue;
  * Created by zhao on 17-10-3.
  */
 
-public class Density {
+public class SizeUtil {
 
     public static int dip2px(Context context,int dpValue){
         float density = context.getResources().getDisplayMetrics().density;
