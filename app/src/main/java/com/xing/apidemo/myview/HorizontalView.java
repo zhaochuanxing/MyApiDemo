@@ -3,6 +3,7 @@ package com.xing.apidemo.myview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Scroller;
@@ -24,6 +25,7 @@ public class HorizontalView extends ViewGroup {
     private int mCurrentIndex;
     private int mChildWidth;
     private Scroller mScroller;
+    private VelocityTracker mTracker;
 
     public HorizontalView(Context context) {
         this(context,null);
@@ -41,6 +43,7 @@ public class HorizontalView extends ViewGroup {
 
     private void init() {
         mScroller = new Scroller(mContext);
+        mTracker = VelocityTracker.obtain();
     }
 
     @Override
@@ -144,8 +147,27 @@ public class HorizontalView extends ViewGroup {
                     }else{
                         mCurrentIndex--;
                     }
+                }else{
+                    mTracker.computeCurrentVelocity(1000);
+                    //获得x方向的分速度
+                    float xV = mTracker.getXVelocity();
+                    if(Math.abs(xV)>50){
+                        //切换到上一个页面
+                        if(xV>0){
+                            mCurrentIndex--;
+                        }else{
+                            mCurrentIndex++;
+                        }
+                    }
+
+                }
+                if(mCurrentIndex<0){
+                    mCurrentIndex=0;
+                }else if(mCurrentIndex>getChildCount()-1){
+                    mCurrentIndex = getChildCount()-1;
                 }
                 smoothScrollTo(mCurrentIndex * mChildWidth,0);
+                mTracker.clear();
                 break;
             default:
                 break;

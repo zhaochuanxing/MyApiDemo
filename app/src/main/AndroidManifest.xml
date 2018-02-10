@@ -142,12 +142,13 @@
         <activity android:name=".myview.ScrollActivity">
         </activity>
         <activity android:name=".myview.InvalidateTextViewActivity">
-
         </activity>
         <activity android:name=".mediaplayer.VideoPlayActivity">
-
         </activity>
         <activity android:name=".mediaplayer.VideoPlaySyncActivity">
+
+        </activity>
+        <activity android:name=".myview.HorizontalActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
