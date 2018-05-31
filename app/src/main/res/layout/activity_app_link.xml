@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xing.apidemo.appLink.AppLinkActivity">
+
+    <Button
+        android:id="@+id/btn_app_down"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="下载应用"
+        />
+    <Button
+        android:id="@+id/btn_go_appstore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="吊起系统应用商店"
+        />
+    <Button
+        android:id="@+id/btn_web"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转到浏览器下载"
+        android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:id="@+id/btn_appcenter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="调起应用中心"
+        android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:id="@+id/btn_himarket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="直接跳转海信应用中心"
+        />
+
+</LinearLayout>

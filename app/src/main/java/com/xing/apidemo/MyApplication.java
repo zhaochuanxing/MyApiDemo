@@ -15,13 +15,21 @@ import com.bumptech.glide.load.engine.cache.LruResourceCache;
  */
 
 public class MyApplication extends Application {
-    private MyApplication mContext;
+    private static Application mContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        this.mContext = this;
-//        initGlide(this);
+        setApplication(this);
+        initGlide(this);
+    }
+
+    private static void setApplication(Application context){
+        mContext = context;
+    }
+
+    public static Application getApplication(){
+        return mContext;
     }
 
     private void initGlide(Context context) {

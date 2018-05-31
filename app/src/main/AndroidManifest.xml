@@ -148,9 +148,11 @@
         <activity android:name=".mediaplayer.VideoPlaySyncActivity">
         </activity>
         <activity android:name=".myview.HorizontalActivity">
-
         </activity>
         <activity android:name=".video.VideoViewActivity">
+
+        </activity>
+        <activity android:name=".appLink.AppLinkActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
