@@ -86,7 +86,7 @@ public class AppLinkActivity extends AppCompatActivity {
         hiMarketBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("himarket://details?id=com.zhihu.android");
+                Uri uri = Uri.parse("himarket://details?id=com.zhihu.android&isAutoDownload=1");
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(uri);
                 AppLinkActivity.this.startActivity(intent);
