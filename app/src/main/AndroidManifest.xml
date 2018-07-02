@@ -152,14 +152,9 @@
         <activity android:name=".video.VideoViewActivity">
         </activity>
         <activity android:name=".appLink.AppLinkActivity">
-
         </activity>
         <activity android:name=".install.InstallActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
 
         <provider
@@ -169,9 +164,16 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_path"
-                />
+                android:resource="@xml/file_path"/>
         </provider>
+
+        <activity android:name=".newview.ViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
