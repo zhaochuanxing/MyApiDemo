@@ -154,7 +154,6 @@
         <activity android:name=".appLink.AppLinkActivity">
         </activity>
         <activity android:name=".install.InstallActivity">
-
         </activity>
 
         <provider
@@ -168,6 +167,11 @@
         </provider>
 
         <activity android:name=".newview.ViewActivity">
+        </activity>
+        <activity android:name=".newview.NewViewGroupAty">
+
+        </activity>
+        <activity android:name=".newview.CanvasActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
