@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PixelFormat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -17,6 +18,7 @@ import android.view.SurfaceView;
 
 public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback, Runnable {
 
+    private static final String TAG = MySurfaceView.class.getSimpleName();
     private SurfaceHolder mHolder;
     private boolean mIsDrawing;
     private Canvas mCanvas;
@@ -58,17 +60,19 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         mIsDrawing = true;
+        Log.i(TAG,"surfaceCreated "+holder);
         new Thread(this).start();
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
+        Log.i(TAG,"surfaceChanged "+holder);
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         mIsDrawing = false;
+        Log.i(TAG,"surface Destroyed");
     }
 
     @Override
