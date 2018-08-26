@@ -57,13 +57,13 @@ public class BaseView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.i(TAG,"onTouchEvent "+this);
+        Log.i(TAG,"onTouchEvent "+this+",event = "+event.getAction());
         return super.onTouchEvent(event);
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        Log.i(TAG,"dispatchTouchEvent"+this);
+        Log.i(TAG,"dispatchTouchEvent"+this+",event = "+event.getAction());
         return super.dispatchTouchEvent(event);
     }
 }

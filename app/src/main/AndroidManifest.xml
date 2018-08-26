@@ -74,6 +74,11 @@
         <activity android:name=".aty.MyScrollActivity">
         </activity>
         <activity android:name=".aty.EvnetActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".aty.ClockActivity">
         </activity>
@@ -92,11 +97,6 @@
         <activity android:name=".aty.PathActivity">
         </activity>
         <activity android:name=".aty.MySurfaceViewActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".aty.SoundPoolActivity">
         </activity>
@@ -176,10 +176,16 @@
         <activity android:name=".newview.NewViewGroupAty">
         </activity>
         <activity android:name=".newview.CanvasActivity">
-
         </activity>
         <activity android:name=".statusbar.StatusBarAty">
-
+        </activity>
+        <activity android:name=".roomdata.RoomActivity">
+        </activity>
+        <activity android:name=".livedata.LiveDataActivity">
+        </activity>
+        <activity android:name=".greendao.GreenActivity">
+        </activity>
+        <activity android:name=".eventbus.EventBusActivity">
         </activity>
     </application>
 

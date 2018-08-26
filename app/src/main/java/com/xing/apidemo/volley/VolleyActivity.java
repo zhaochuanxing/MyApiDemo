@@ -59,7 +59,7 @@ public class VolleyActivity extends AppCompatActivity {
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonObjectRequest);
-//        VolleyUtil.getInstance(this).getRequestQueue().add(jsonObjectRequest);
+        VolleyUtil.getInstance(this).getRequestQueue().add(jsonObjectRequest);
     }
 
     private void initMyView() {

@@ -26,6 +26,12 @@ public class MyViewGroupA extends BaseViewGroup {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+//        return true;
         return super.onInterceptTouchEvent(ev);
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
     }
 }

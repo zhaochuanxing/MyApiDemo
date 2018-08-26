@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 
 public abstract class BaseViewGroup extends FrameLayout {
 
-    private final String TAG = BaseViewGroup.class.getSimpleName();
+    public static final String TAG = BaseViewGroup.class.getSimpleName();
 
     public BaseViewGroup(Context context) {
         super(context);
@@ -30,19 +30,19 @@ public abstract class BaseViewGroup extends FrameLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.i(TAG,"dispatchTouchEvent "+this+",event = "+ev);
+        Log.i(TAG,"dispatchTouchEvent "+this+",event = "+ev.getAction());
         return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        Log.i(TAG,"onInterceptTouchEvent "+this);
+        Log.i(TAG,"onInterceptTouchEvent "+this+",event = "+ev.getAction());
         return super.onInterceptTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.i(TAG,"onTouchEvent "+this);
+        Log.i(TAG,"onTouchEvent "+this+",event = "+event.getAction());
         return super.onTouchEvent(event);
     }
 }
