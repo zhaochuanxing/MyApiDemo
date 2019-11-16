@@ -41,7 +41,7 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
 
     compile 'com.github.dmytrodanylyk.shadow-layout:library:1.0.3'
-    compile project(':volley')
+//    compile project(':volley')
 
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support:support-v4:26.1.0'
