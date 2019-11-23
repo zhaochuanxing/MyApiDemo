@@ -1,1 +1,1 @@
-include ':app', ':volley', ':javalib'
+include ':app', ':javalib'
