@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.xing.apidemo">
+    package="com.xing.apidemo">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name=".MyApplication"
@@ -14,152 +14,94 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".newvolley.NewVolleyActivity">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!-- <meta-data -->
         <!-- android:name="com.xing.apidemo.glide.MyGlideModule" -->
         <!-- android:value="GlideModule"/> -->
-
-        <activity android:name=".MainActivity">
-        </activity>
-        <activity android:name=".XfermodeActivity">
-        </activity>
-        <activity android:name=".dialog.AlertDialogActivity">
-        </activity>
-        <activity android:name=".view.ViewActivity">
-        </activity>
-        <activity android:name=".view.ImageViewActivity">
-        </activity>
-        <activity android:name=".view.SpecialImageViewActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".XfermodeActivity"></activity>
+        <activity android:name=".dialog.AlertDialogActivity"></activity>
+        <activity android:name=".view.ViewActivity"></activity>
+        <activity android:name=".view.ImageViewActivity"></activity>
+        <activity android:name=".view.SpecialImageViewActivity"></activity>
         <activity
             android:name=".app.ActionBarMechanics"
             android:enabled="true"
-            android:label="哈哈哈">
-        </activity>
+            android:label="哈哈哈"></activity>
         <activity
             android:name=".app.ActionBarNavigation"
             android:icon="@drawable/card_history"
             android:label="actionbar demo"
-            android:logo="@mipmap/ic_launcher">
-        </activity>
-        <activity android:name=".app.ActionBarUsage">
-        </activity>
-        <activity android:name=".myviewgroup.MyViewGroupActivity">
-        </activity>
-        <activity android:name=".myviewgroup.FlowActivity">
-        </activity>
+            android:logo="@mipmap/ic_launcher"></activity>
+        <activity android:name=".app.ActionBarUsage"></activity>
+        <activity android:name=".myviewgroup.MyViewGroupActivity"></activity>
+        <activity android:name=".myviewgroup.FlowActivity"></activity>
         <activity
             android:name=".webview.MyWebViewActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden">
-        </activity>
-        <activity android:name=".webview.NewWebViewActivity">
-        </activity>
-        <activity android:name=".glide.GlideDemoActivity">
-        </activity>
+            android:configChanges="orientation|screenSize|keyboardHidden"></activity>
+        <activity android:name=".webview.NewWebViewActivity"></activity>
+        <activity android:name=".glide.GlideDemoActivity"></activity>
         <activity
             android:name=".volley.VolleyActivity"
             android:label="@string/title_activity_volley"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".okhttp.OkhttpActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".aty.MyTextViewActivity">
-        </activity>
-        <activity android:name=".aty.ProgressActivity">
-        </activity>
-        <activity android:name=".app.SoundShapeActivity">
-        </activity>
-        <activity android:name=".aty.MyScrollActivity">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".aty.MyTextViewActivity"></activity>
+        <activity android:name=".aty.ProgressActivity"></activity>
+        <activity android:name=".app.SoundShapeActivity"></activity>
+        <activity android:name=".aty.MyScrollActivity"></activity>
         <activity android:name=".aty.EvnetActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
-        <activity android:name=".aty.ClockActivity">
-        </activity>
-        <activity android:name=".aty.LayerActivity">
-        </activity>
-        <activity android:name=".aty.BitmapActivity">
-        </activity>
-        <activity android:name=".aty.PorterActivity">
-        </activity>
-        <activity android:name=".aty.SwipeActivity">
-        </activity>
-        <activity android:name=".aty.ShaderActivity">
-        </activity>
-        <activity android:name=".aty.ReflectionActivity">
-        </activity>
-        <activity android:name=".aty.PathActivity">
-        </activity>
-        <activity android:name=".aty.MySurfaceViewActivity">
-        </activity>
-        <activity android:name=".aty.SoundPoolActivity">
-        </activity>
-        <activity android:name=".aty.PermissionActivity">
-        </activity>
-        <activity android:name=".aty.ViewAnimationActivity">
-        </activity>
-        <activity android:name=".aty.ShadowActivity">
-        </activity>
-        <activity android:name=".aty.ProPerAniActivity">
-        </activity>
-        <activity android:name=".ani.PointAnimActivity">
-        </activity>
-        <activity android:name=".aty.LayoutAniActivity">
-        </activity>
-        <activity android:name=".material.PaleteActivity">
-        </activity>
-        <activity android:name=".material.ZorderActivity">
-        </activity>
-        <activity android:name=".material.TintActivity">
-        </activity>
-        <activity android:name=".material.ClipActivity">
-        </activity>
-        <activity android:name=".material.CardActivity">
-        </activity>
-        <activity android:name=".material.FromActivity">
-        </activity>
-        <activity android:name=".material.ToActivity">
-        </activity>
-        <activity android:name=".material.RippleActivity">
-        </activity>
-        <activity android:name=".material.RevealActivity">
-        </activity>
-        <activity android:name=".notification.NotificationActivity">
-        </activity>
-        <activity android:name=".rxjava.RxjavaActivity">
-        </activity>
-        <activity android:name=".rxjava.RxBusActivity">
-        </activity>
-        <activity android:name=".rxjava.OperationActivity">
-        </activity>
-        <activity android:name=".rxjava.OkHttpRxActivity">
-        </activity>
-        <activity android:name=".emoji.EmojiActivity">
-        </activity>
-        <activity android:name=".myview.MoveViewActivity">
-        </activity>
-        <activity android:name=".myview.ScrollActivity">
-        </activity>
-        <activity android:name=".myview.InvalidateTextViewActivity">
-        </activity>
-        <activity android:name=".mediaplayer.VideoPlayActivity">
-        </activity>
-        <activity android:name=".mediaplayer.VideoPlaySyncActivity">
-        </activity>
-        <activity android:name=".myview.HorizontalActivity">
-        </activity>
-        <activity android:name=".video.VideoViewActivity">
-        </activity>
-        <activity android:name=".appLink.AppLinkActivity">
-        </activity>
-        <activity android:name=".install.InstallActivity">
-        </activity>
+        <activity android:name=".aty.ClockActivity"></activity>
+        <activity android:name=".aty.LayerActivity"></activity>
+        <activity android:name=".aty.BitmapActivity"></activity>
+        <activity android:name=".aty.PorterActivity"></activity>
+        <activity android:name=".aty.SwipeActivity"></activity>
+        <activity android:name=".aty.ShaderActivity"></activity>
+        <activity android:name=".aty.ReflectionActivity"></activity>
+        <activity android:name=".aty.PathActivity"></activity>
+        <activity android:name=".aty.MySurfaceViewActivity"></activity>
+        <activity android:name=".aty.SoundPoolActivity"></activity>
+        <activity android:name=".aty.PermissionActivity"></activity>
+        <activity android:name=".aty.ViewAnimationActivity"></activity>
+        <activity android:name=".aty.ShadowActivity"></activity>
+        <activity android:name=".aty.ProPerAniActivity"></activity>
+        <activity android:name=".ani.PointAnimActivity"></activity>
+        <activity android:name=".aty.LayoutAniActivity"></activity>
+        <activity android:name=".material.PaleteActivity"></activity>
+        <activity android:name=".material.ZorderActivity"></activity>
+        <activity android:name=".material.TintActivity"></activity>
+        <activity android:name=".material.ClipActivity"></activity>
+        <activity android:name=".material.CardActivity"></activity>
+        <activity android:name=".material.FromActivity"></activity>
+        <activity android:name=".material.ToActivity"></activity>
+        <activity android:name=".material.RippleActivity"></activity>
+        <activity android:name=".material.RevealActivity"></activity>
+        <activity android:name=".notification.NotificationActivity"></activity>
+        <activity android:name=".rxjava.RxjavaActivity"></activity>
+        <activity android:name=".rxjava.RxBusActivity"></activity>
+        <activity android:name=".rxjava.OperationActivity"></activity>
+        <activity android:name=".rxjava.OkHttpRxActivity"></activity>
+        <activity android:name=".emoji.EmojiActivity"></activity>
+        <activity android:name=".myview.MoveViewActivity"></activity>
+        <activity android:name=".myview.ScrollActivity"></activity>
+        <activity android:name=".myview.InvalidateTextViewActivity"></activity>
+        <activity android:name=".mediaplayer.VideoPlayActivity"></activity>
+        <activity android:name=".mediaplayer.VideoPlaySyncActivity"></activity>
+        <activity android:name=".myview.HorizontalActivity"></activity>
+        <activity android:name=".video.VideoViewActivity"></activity>
+        <activity android:name=".appLink.AppLinkActivity"></activity>
+        <activity android:name=".install.InstallActivity"></activity>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -168,25 +110,17 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_path"/>
+                android:resource="@xml/file_path" />
         </provider>
 
-        <activity android:name=".newview.ViewActivity">
-        </activity>
-        <activity android:name=".newview.NewViewGroupAty">
-        </activity>
-        <activity android:name=".newview.CanvasActivity">
-        </activity>
-        <activity android:name=".statusbar.StatusBarAty">
-        </activity>
-        <activity android:name=".roomdata.RoomActivity">
-        </activity>
-        <activity android:name=".livedata.LiveDataActivity">
-        </activity>
-        <activity android:name=".greendao.GreenActivity">
-        </activity>
-        <activity android:name=".eventbus.EventBusActivity">
-        </activity>
+        <activity android:name=".newview.ViewActivity"></activity>
+        <activity android:name=".newview.NewViewGroupAty"></activity>
+        <activity android:name=".newview.CanvasActivity"></activity>
+        <activity android:name=".statusbar.StatusBarAty"></activity>
+        <activity android:name=".roomdata.RoomActivity"></activity>
+        <activity android:name=".livedata.LiveDataActivity"></activity>
+        <activity android:name=".greendao.GreenActivity"></activity>
+        <activity android:name=".eventbus.EventBusActivity"></activity>
     </application>
 
 </manifest>
